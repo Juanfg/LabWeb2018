@@ -1,0 +1,17 @@
+{
+  "name": "w2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "maps.html",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Juan Pablo Flores Galindo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}

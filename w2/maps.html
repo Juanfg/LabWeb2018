@@ -2,22 +2,14 @@
 <html>
 <head> 
     <meta name="viewport" content="width=device-width" />
-   
-    <style type="text/css">
-        html { height: 100% }
-        body { height: 100%; margin: 0; padding: 0 }
-        #map_canvas { height: 100% }
-    </style>
 
+    <!--Styles-->
+    <link href="public/css/app.css" rel="stylesheet" type="text/css"/>
+
+    <!--Scripts-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&sensor=true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <style type="text/css">
-            .colorYellow { color: yellow; }
-            .colorRed { color: red; }
-            .colorBlue { color: blue; }
-            .colorGreen { color: green; }
-    </style>
+    <script type="text/javascript" src="public/js/app.js"></script>
 </head>
 
 <body onload="initMap()">
@@ -43,7 +35,6 @@
             </td>
         </tr>
     </table>
-
 
     <div id="map_canvas"  style="width: 100%; height: 90%; float: left; border: 1px solid black;">
 
