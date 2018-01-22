@@ -9,7 +9,10 @@ body {
 }
 
 #map_canvas {
-    height: 100%;
+    width: 100%; 
+    height: 100%; 
+    float: left; 
+    border: 1px solid black;
 }
 
 .colorYellow {
@@ -24,4 +27,9 @@ body {
 }
 .colorGreen {
     color: green;
+}
+
+.dropdown-custom > .dropdown-menu {
+	min-width: 220px;
+	padding: 15px;
 }

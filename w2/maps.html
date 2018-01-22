@@ -5,38 +5,85 @@
 
     <!--Styles-->
     <link href="public/css/app.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!--Scripts-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&sensor=true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&sensor=true"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="public/js/app.js"></script>
+
 </head>
 
 <body onload="initMap()">
-    <table border="0">
-        <tr>
-            <td class='colorBlue'>Google</td>
-            <td class='colorRed'>Maps</td>
-            <td class='colorYellow'><b>Demo </b></td>
-            
-        </tr>
-    </table>
 
-    <table>
-        <tr>
-            <td>
-                LAT:
-                <input name="fecha" id="lat" type="text" size="10"/>
-                LNG:
-                <input name="fecha" id="lng" type="text" size="10"/>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <input type="button" value="Obtener Direccion" onclick="obtenerDireccion()"/>
-                <input type="button" value="Obtener Clima" onclick="obtenerClima()"/>
-            </td>
-        </tr>
-    </table>
+        <div class="navbar-brand">
+            <span class="colorBlue">Google</span>
+            <span class="colorRed">Maps</span>
+            <span class="colorYellow">Demo</span>            
+        </div>
 
-    <div id="map_canvas"  style="width: 100%; height: 90%; float: left; border: 1px solid black;">
+        <div class="collapse navbar-collapse" id="nav-content">
+            <!--Latitud y Longitud-->
+            <form class="form-inline">
+                <div class="input-group mr-sm-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">LAT</span>
+                    </div>
+                    <input class="form-control" name="latitud" id="lat" type="text" size="10"/>
+                </div>
+                <div class="input-group mr-sm-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">LNG</span>
+                    </div>
+                    <input class="form-control" name="longitud" id="lng" type="text" size="10"/>
+                </div>
+            </form>
+
+            <!--Dropdowns-->
+            <ul class="navbar-nav ml-auto">
+
+                <!--Marcador-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Marker" role="button" aria-haspopup="true" aria-expanded="false">Marcador</a>
+                    <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="Marker">
+                        <form class="form">
+                            <div class="form-group">
+                                <input class="dropdown-item" type="color" id="marker_color_picker">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="caracter" placeholder="Caracter" id="character_marker">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="mensaje" placeholder="Mensaje" id="message_marker">
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary" value="Cambiar Marcador" onclick="drawMarker()"></input>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <!--Datos-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Direction-Weather" role="button" aria-haspopup="true" aria-expanded="false">Datos</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Direction-Weather">
+                        <input class="dropdown-item btn btn-outline-light btn-sm " type="button" value="Obtener Direccion" onclick="obtenerDireccion()"/>
+                        <input class="dropdown-item btn btn-outline-light btn-sm" type="button" value="Obtener Clima" onclick="obtenerClima()"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="map_canvas">
 
     </div>     
 </body>

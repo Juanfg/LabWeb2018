@@ -63,44 +63,41 @@ function initMap() {
     
 function drawMarker() 
 {
-    
     var infowindow = new google.maps.InfoWindow();
     var marker, i; 
     var nombre = sessionStorage.nombreCliente;
-    var message = "Tec de Mty";
+    var message = document.getElementById('message_marker').value;
+    var characterPin = document.getElementById('character_marker').value;
     
-        var pinColor = "000000";
+    var color = document.getElementById('marker_color_picker').value;
+    var pinColor = color !== undefined ? color.replace('#', '') : '000000';
+
+    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + characterPin + "|" + pinColor,
+            new google.maps.Size(21, 34),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(10, 34));
+
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, lng),
+        icon: pinImage,
+        title: message,
+        map: map
+    });
 
     
-        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-                new google.maps.Size(21, 34),
-                new google.maps.Point(0, 0),
-                new google.maps.Point(10, 34));
 
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, lng),
-            icon: pinImage,
-            title: '' + message,
-            map: map
-        });
-
-        
-
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(nombre);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
+    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+            infowindow.setContent(nombre);
+            infowindow.open(map, marker);
+        }
+    })(marker, i));
     
 }
 
-    
 
 function obtenerDireccion()
 {
-    alert("obteniendo direccion ...");
-
     var geocoder = new google.maps.Geocoder;
     
     var mylat = document.getElementById('lat').value;
@@ -110,32 +107,55 @@ function obtenerDireccion()
     geocoder.geocode({'location': latlng}, function(results, status) {
         if (status === 'OK') {
         if (results[0]) {
-            //window.alert(results[0].formatted_address);
-            window.alert(JSON.stringify(results[0]));
-            
+            swal({
+                icon: "success",
+                text: results[0].formatted_address
+            });
         } else {
-            window.alert('No results found');
+            swal({
+                icon: "info",
+                text: "No hay resultados"
+            });
         }
         } else {
-            window.alert('Geocoder failed due to: ' + status);
+            swal({
+                icon: "error",
+                text: "Geocoder failed due to: " +  status
+            });
         }
     });
 }
 
-
 function obtenerClima()
 {
-    alert("obteniendo clima ...");
-
-    var lat = 19.0433;
-    var lng = -98.2019;
+    var lat = document.getElementById('lat').value;
+    var lng = document.getElementById('lng').value;
     var apiKey = "2af72ef62258728d72777bef612f2a3e";
+    //var apikey = 8abe9c195f290074129c14ed2ef8aac1;
 
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + 
     lat + "&lon=" + lng + "&appid=" + apiKey, function(data) 
     {
-        alert(JSON.stringify(data));
+        swal({
+            icon: "success",
+            text:
+            "Nombre: " + data.name + "\n" +
+            "Latitud: " + data.coord.lat + "\n" +
+            "Longitud: " + data.coord.lon + "\n" +
+            "Temperatura: " + data.main.temp + "\n" +
+            "Presion: " + data.main.pressure + "\n" +
+            "Humedad: " + data.main.humidity + "\n" +
+            "Temperatura Minima: " + data.main.temp_min + "\n" +
+            "Temperatura Maxima: " + data.main.temp_max + "\n" +
+            "Visibilidad: " +  data.visibility + "\n" +
+            "Velocidad del viento: " + data.wind.speed + "\n" +
+            "Nubes: " + data.clouds.all
+        });
     })
+    .fail(function() {
+        swal({
+            icon:"error",
+            text: "Error al tratar de encontrar el clima"
+        });
+    });
 }
-
- 
