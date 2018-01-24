@@ -8,46 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script>
-    
-function showpage(idpage){
-    //alert(idpage);
+  <script type="text/javascript" src="public/js/app.js"></script>
+  <script type="text/javascript" src="public/js/facebook.js"></script>
 
-    if (idpage==0)
-    {
-        $("#home").show();
-        $("#customer").hide();
-        
-        $("#car").hide();
-        $("#payment").hide();
-    }
-    if (idpage==1)
-    {
-        $("#customer").show();
-        $("#home").hide();
-        $("#car").hide();
-        $("#payment").hide();
-    }
-    if (idpage==2)
-    {
-        $("#car").show();
-        $("#customer").hide();
-        $("#home").hide();
-        
-        $("#payment").hide();
-    }
-
-    if (idpage==3)
-    {
-        $("#payment").show();
-        $("#car").hide();
-        $("#customer").hide();
-        $("#home").hide();
-        
-        
-    }
-}
-</script>
 </head>
 <body>
 
@@ -84,5 +47,11 @@ function showpage(idpage){
     <h3>Payment</h3>
     <p>Payment here</p>
   </div>
+
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
 </body>
 </html>
