@@ -65,8 +65,8 @@ function drawMarker()
 {
     var infowindow = new google.maps.InfoWindow();
     var marker, i; 
-    var nombre = sessionStorage.nombreCliente;
     var message = document.getElementById('message_marker').value;
+    var nombre = message;
     var characterPin = document.getElementById('character_marker').value;
     
     var color = document.getElementById('marker_color_picker').value;
@@ -130,8 +130,8 @@ function obtenerClima()
 {
     var lat = document.getElementById('lat').value;
     var lng = document.getElementById('lng').value;
-    var apiKey = "2af72ef62258728d72777bef612f2a3e";
-    //var apikey = 8abe9c195f290074129c14ed2ef8aac1;
+    // var apiKey = "2af72ef62258728d72777bef612f2a3e";
+    var apiKey = '8abe9c195f290074129c14ed2ef8aac1';
 
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + 
     lat + "&lon=" + lng + "&appid=" + apiKey, function(data) 
