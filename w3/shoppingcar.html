@@ -40,12 +40,15 @@
     </nav>
 
     <div class="container" id="home">
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState(); showpage(1)">
         </fb:login-button>
     </div>
 
     <div class="container" id="customer" style="display: none">
-
+        <div class="container-fluid">
+            <h1 id="status"></h1>
+            <img src="" id="ProfilePicture" class="img-thumbnail">
+        </div>
     </div>
 
     <div class="container" id="car" style="display: none">
