@@ -1,0 +1,120 @@
+% Author: Adolfo Centeno 
+% Kubeet Corp
+% www.kubeet.com
+
+ 
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemeshadow}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\begin{document}
+\title{Lab web - Docker Workshop }  
+\author{Adolfo Centeno Tellez}
+\date{\today} 
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}\frametitle{Table of contents}\tableofcontents
+\end{frame} 
+
+\section{Docker}
+ 
+\defverbatim[colored]\lstinstall{
+ \begin{lstlisting}[language=python,showstringspaces=false, basicstyle={\tiny}, keywordstyle=\color{red}]
+
+$ sudo apt-get update
+
+$ sudo apt-get install apt-transport-https ca-certificates curl 
+  software-properties-common
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/
+  linux/ubuntu $(lsb_release -cs) stable"
+
+$ sudo apt-get update
+
+$ sudo apt-get install docker-ce
+ \end{lstlisting}
+}
+
+
+\defverbatim[colored]\lsthelloworld{
+ \begin{lstlisting}[language=python,showstringspaces=false, basicstyle={\tiny}, keywordstyle=\color{red}]
+
+$ nano Dockerfile
+$ nano package.json
+$ sudo docker build -t adsoft/nodejs .
+$ sudo docker images
+$ sudo docker run -p 80:80 -v $PWD/wk1:/src -d adsoft/nodejs
+$ sudo docker ps
+
+ \end{lstlisting}
+}
+
+
+
+\defverbatim[colored]\lstdockerhub{
+ \begin{lstlisting}[language=python,showstringspaces=false, basicstyle={\tiny}, keywordstyle=\color{red}]
+
+$ sudo docker login
+$ sudo docker push user/imagetag
+$ sudo docker pull user/imagetag
+
+
+ \end{lstlisting}
+}
+
+
+\begin{frame}\frametitle{Docker} 
+ Activities:
+\begin{enumerate}
+\item
+  Docker install 
+\item
+  Hello world 
+\item    
+  Hub docker
+
+\end{enumerate}
+
+\end{frame}
+
+
+\subsection{Docker install} 
+\begin{frame}\frametitle{Script install} 
+ 
+\begin{block}
+  \lstinstall
+\end{block}
+
+\end{frame}
+
+
+
+\subsection{Docker HelloWorld} 
+\begin{frame}\frametitle{HelloWorld} 
+ 
+\begin{block}
+  \lsthelloworld
+\end{block}
+
+\end{frame}
+
+
+\subsection{Hub Docker} 
+\begin{frame}\frametitle{HelloWorld} 
+ 
+\begin{block}
+  \lstdockerhub
+\end{block}
+
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Instrucciones: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Valor: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME\ (\ADSOFTID)}}
+\chead{\textbf{HW\HWNUM}}
+\rhead{LabWeb2018, \today}
+\begin{document}\raggedright
+
+\newcommand\NAME{Adolfo Centeno}  
+\newcommand\ADSOFTID{adsoft}     
+\newcommand\HWNUM{3}              
+
+\question{1}{Messenger} 
+
+\part{a} \algorithm  Realizar laboratorio chatBot de formal local con ngrok. Ver \url{https://github.com/RN3r1/Tutorial-Echobot}
+
+\correctness 50 pts.
+
+\question{2}{Heroku}
+\part{a} \algorithm Abrir cuenta en \url{https://www.heroku.com/}, crear un contenedor Docker del Chatbot hacer deploy en heroku. Ver {https://github.com/RN3r1/DockerChatbotExample} 
+
+\correctness 50 pts.
+
+\end{document}
