@@ -246,8 +246,8 @@ function showScar() {
         var cellDescuento = rowCir.insertCell(5);
         var cellAgregar = rowCir.insertCell(6);
         var cellBorrar = rowCir.insertCell(7);
-        var url = "<a href=\"javascript: void();\" onclick=\"deleteItem(" + tweet.ProductID + ")\">Borrar</a>";
-        var urlAgregar = "<a href=\"javascript: void();\" onclick=\"addOneMoreItem(" + tweet.ProductID + ")\">Agregar</a>";
+        var url = "<a class=\"btn btn-danger\" type=\"button\" href=\"javascript: void();\" onclick=\"deleteItem(" + tweet.ProductID + ")\">Borrar</a>";
+        var urlAgregar = "<a class=\"btn btn-success\" type=\"button\" href=\"javascript: void();\" onclick=\"addOneMoreItem(" + tweet.ProductID + ")\">Agregar</a>";
 
         cellCantidad.innerHTML = tweet.Cantidad;
         cellProducto.innerHTML = tweet.ProductName;
