@@ -9,7 +9,7 @@ app.use('public', express.static(path.join(__dirname, '/public')));
 app.use('assets', express.static(path.join(__dirname, '/assets')));
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/app.html'));
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.listen(app.get('port'), function() {
