@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-app.set('port', (process.env.PORT || 8082));
+app.set('port', (process.env.PORT || 8080));
 
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/assets', express.static(path.join(__dirname, '/assets')));
