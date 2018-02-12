@@ -81,4 +81,5 @@ function testAPI() {
 
 function showTabs() {
     $('#userName').show();
+    $('#login').hide();
 }
