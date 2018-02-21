@@ -11,6 +11,6 @@ function getVideos() {
 
 function placeVideos(ids) {
     ids.forEach(element => {
-        $( "#youtube" ).append( '<iframe class="col-sm-3" width="420" height="315"src="https://www.youtube.com/embed/' + element + '"></iframe>' );
+        $( "#youtube-videos" ).append( '<div class="col-lg-4 col-sm-6"><iframe width="650" height="350"src="https://www.youtube.com/embed/' + element + '"></iframe></div>' );
     });
 }

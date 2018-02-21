@@ -24,28 +24,52 @@ function getProducts() {
 
     var myProduct1 = new ShoppingCarProduct();
     myProduct1.id = "001";
-    myProduct1.name = "Laptop Dell";
-    myProduct1.price = "12000";
-    myProduct1.image = "https://www.cyberpuerta.mx/img/product/XL/CP-DELL-L358I5SS81TW10P3W-1.jpg";
-    myProduct1.discount = 20;
+    myProduct1.name = "Pozole Blanco";
+    myProduct1.price = "50";
+    myProduct1.image = "https://static.guiainfantil.com/uploads/Alimentacin/pozole.jpg";
+    myProduct1.discount = 10;
 
     var myProduct2 = new ShoppingCarProduct();
     myProduct2.id = "002";
-    myProduct2.name = "Xbox One S";
-    myProduct2.price = "9500";
-    myProduct2.image = "https://manofmany.com/wp-content/uploads/2016/06/xbox-one-s-3.jpg";
+    myProduct2.name = "Pozole Rojo";
+    myProduct2.price = "50";
+    myProduct2.image = "http://www.dietnews.net/images/haberler/2017/12/how-can-a-diet-of-cabbage-soup-benefit-you_f4961.jpg";
     myProduct2.discount = 30;
 
     var myProduct3 = new ShoppingCarProduct();
     myProduct3.id = "003";
-    myProduct3.name = "RaspBerry Pi 3";
-    myProduct3.price = "1250";
-    myProduct3.image = "https://images-na.ssl-images-amazon.com/images/I/91zSu44%2B34L._SX355_.jpg";
+    myProduct3.name = "Pozole Verde";
+    myProduct3.price = "55";
+    myProduct3.image = "https://www.cocinavital.mx/wp-content/uploads/2017/08/pozole-verde.jpg";
+    myProduct3.discount = 0;
+
+    var myProduct4 = new ShoppingCarProduct();
+    myProduct3.id = "004";
+    myProduct3.name = "Chalupas";
+    myProduct3.price = "35";
+    myProduct3.image = "https://s-media-cache-ak0.pinimg.com/originals/03/ab/51/03ab516155cef2c6bc77334041cb7dc1.jpg";
     myProduct3.discount = 50;
+
+    var myProduct5 = new ShoppingCarProduct();
+    myProduct3.id = "005";
+    myProduct3.name = "Tacos";
+    myProduct3.price = "15";
+    myProduct3.image = "http://www.columbusunderground.com/wp-content/themes/patterns/timthumb.php?src=http%3A%2F%2Fwww.columbusunderground.com%2Fwp-content%2Fuploads%2F2016%2F08%2Fbest-bites-tacos-2016-19.jpg&q=90&w=650&h=300&zc=1&";
+    myProduct3.discount = 20;
+
+    var myProduct6 = new ShoppingCarProduct();
+    myProduct3.id = "006";
+    myProduct3.name = "Tacos de Cochinita";
+    myProduct3.price = "16";
+    myProduct3.image = "http://cafeynez.com/wp-content/uploads/2015/05/cochinta-650x300.jpg";
+    myProduct3.discount = 0;
 
     listProducts.push(myProduct1);
     listProducts.push(myProduct2);
     listProducts.push(myProduct3);
+    listProducts.push(myProduct4);
+    listProducts.push(myProduct5);
+    listProducts.push(myProduct6);
 
     try {
         tweets = JSON.stringify(listProducts);
@@ -54,7 +78,6 @@ function getProducts() {
 
         tweets.forEach(function (tweet) {
             $('#id_productos').append($("<option></option>").attr("value", tweet.id).text(tweet.name));
-            console.log('A');
         });
     }
     catch (e) {
@@ -251,7 +274,7 @@ function showScar() {
         cellCantidad.innerHTML = tweet.Cantidad;
         cellProducto.innerHTML = tweet.ProductName;
         cellPrecio.innerHTML = tweet.Precio;
-        cellImagen.innerHTML = '<img src="' + tweet.Imagen + '" class="image-thumbnail" height="100" width="100">';
+        cellImagen.innerHTML = '<img src="' + tweet.Imagen + '" class="image-thumbnail" height="100" width="150">';
         cellDescuento.innerHTML = tweet.Descuento;
 
         cellImporte.innerHTML = tweet.Importe;
