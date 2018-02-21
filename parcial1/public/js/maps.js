@@ -143,35 +143,3 @@ function obtenerDireccion() {
         }
     });
 }
-
-function obtenerClima() {
-    var lat = document.getElementById('lat').value;
-    var lng = document.getElementById('lng').value;
-    // var apiKey = "2af72ef62258728d72777bef612f2a3e";
-    var apiKey = '8abe9c195f290074129c14ed2ef8aac1';
-
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" +
-        lat + "&lon=" + lng + "&appid=" + apiKey, function (data) {
-            swal({
-                icon: "success",
-                text:
-                    "Nombre: " + data.name + "\n" +
-                    "Latitud: " + data.coord.lat + "\n" +
-                    "Longitud: " + data.coord.lon + "\n" +
-                    "Temperatura: " + data.main.temp + "\n" +
-                    "Presion: " + data.main.pressure + "\n" +
-                    "Humedad: " + data.main.humidity + "\n" +
-                    "Temperatura Minima: " + data.main.temp_min + "\n" +
-                    "Temperatura Maxima: " + data.main.temp_max + "\n" +
-                    "Visibilidad: " + data.visibility + "\n" +
-                    "Velocidad del viento: " + data.wind.speed + "\n" +
-                    "Nubes: " + data.clouds.all
-            });
-        })
-        .fail(function () {
-            swal({
-                icon: "error",
-                text: "Error al tratar de encontrar el clima"
-            });
-        });
-}
