@@ -2,6 +2,7 @@
 """Archivo principal para el echobot. Main File for the echobot"""
 from fbmq import Page
 from flask import Flask, request
+import random
 
 # Token generado por la página web. Generated token in the facebook web page
 PAGE_ACCESS_TOKEN = "EAAEx2jjfZBwsBAO0byG9fBZCqhFjZAmxfodVXby2gZAKkHLcjghZCkWvnm4AkRzZB4eoOjUED2f1ewmgQbcBj4MLbAp356mPu7BUaUe6ZC2w8h2qbOeJs6zASHNJN8B7eqO62geQXlCfyyddyEZA1076SRRiRgc3fMScJTA6l7kZATgZDZD"
@@ -34,6 +35,40 @@ def webhook():
             return request.args.get('hub.challenge')
         return 'Wrong Verify token'
 
+GREETING_KEYWORDS = ("hola", "hi", "que onda?", "buenas", "que pedo",)
+GREETING_RESPONSES = ["que pedal dijo el triciclo", "que hongo", "que milanesas que no bisteces", "yo crei que ya morongas", "que honduras mi nicaragua", "que Pachuca por Toluca", "hola", "Buenas tardes"]
+
+def obtener_respuesta(sentence):
+    escribioPozole = False
+    for word in sentence.split():
+        for s in LISTA_PRODUCTOS:
+            if word.lower() in s:
+
+                if word.lower() == "pozole":
+                    escribioPozole = True
+                else:
+                    return s
+        if word.lower() == "lista" or word.lower() == "productos" or word.lower() == "producto" or word.lower() == "platillos":
+            return  "Lista de Productos\n" + '\n'.join(LISTA_PRODUCTOS)
+    if escribioPozole == True:
+        return LISTA_DE_POZOLES
+    return random.choice(NONE_RESPONSES)
+
+NONE_RESPONSES = [
+    "No entendi lo que dijiste",
+    "Esto es lo que yo entiendo:\n'Pedir pozole'\n'Que productos tienes?'",
+]
+
+LISTA_DE_POZOLES = "Pozole Blanco: $50.00\nPozole Rojo: $50.00\nPozole Verde: $55.00"
+
+LISTA_PRODUCTOS = (
+    "pozole blanco: $50.00",
+    "pozole rojo: $55.00",
+    "pozole verde: $50.00",
+    "chalupas: $35.00",
+    "tacos: $15",
+    "tacos de cochinita: $16",
+)
 
 @page.handle_message
 def message_handler(event):
@@ -45,10 +80,11 @@ def message_handler(event):
     if event.is_text_message:
         # We get the message from the event variable and sent it back7
         # Obtenemos el mensaje de la variable event y se lo regresamos al usuario
-        page.send(sender_id, "Hey, you send me: {}".format(event.message_text))
+        # message = check_for_greeting(TextBlob(event.message_text))
+        message = obtener_respuesta(event.message_text)
+        page.send(sender_id, format(message))
     elif event.is_attachment_message:
         page.send(sender_id, "Boo, you didn't send a text. ")
-
 
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=5000, debug=True, threaded=True)
