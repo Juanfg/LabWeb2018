@@ -1,0 +1,24 @@
+{
+  "name": "shoppingcart-vue",
+  "version": "1.0.0",
+  "description": "My perfect Nuxt.js project",
+  "author": "Juan Pablo Flores Galindo",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap-vue": "^1.0.2",
+    "express": "^4.15.3",
+    "nuxt": "^1.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "nodemon": "^1.11.0"
+  }
+}
