@@ -16,10 +16,11 @@ ADD package.json /package.json
 RUN npm install
 
 # Set /src as the working directory for this container
-WORKDIR /src
+WORKDIR ./
 
-# Open up external access to port 80
-EXPOSE 8080
+# Open up external access to port 8083
+EXPOSE 8083
 
 # Run startup command
 CMD ["node", "/src/server.js"]
+# RUN npm start
